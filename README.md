@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="https://image.noelshack.com/fichiers/2021/12/3/1616599991-edit-file.png" width="200">
+</p>
+
 # Subject
 
 ## 1/ Storage
