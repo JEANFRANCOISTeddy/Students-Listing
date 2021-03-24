@@ -91,7 +91,7 @@ async function cli() {
     console.log(chalk.blue("What option do you want to choice : \n"));
     console.log(chalk.green("• Press 1") + " to add student to the list : ");
     console.log(chalk.green("• Press 2")  + " to get student : ");
-    console.log(chalk.green("• Press 3")  + " to show all student in the list : ");
+    console.log(chalk.green("• Press 3")  + " to show all students in the list : ");
     const number = scanf("%s");
 
     switch (number) {
@@ -132,14 +132,12 @@ async function cli() {
  * Create an Ascii title for the program
  */
 function printAsciiTitle() {
-    figlet('Students Listing !!',function (err: any, data: any) {
-        if (err) {
-            console.log('Something went wrong...');
-            console.dir(err);
-            return;
-        }
-        return data;
-    });
+    console.log(figlet.textSync('Students Listing !!', {
+        font: 'ANSI Shadow',
+        horizontalLayout: 'default',
+        verticalLayout: 'default',
+        width: 200
+    }));
 }
 
 printAsciiTitle();
@@ -149,16 +147,8 @@ printAsciiTitle();
  */
 cli().then(function () {
     console.log(chalk.yellow("CLI has been correctly launched"));
-    const link = terminalLink('You can find the code on my GitHub : ', 'https://sindresorhus.com');
+    const link = terminalLink('You can find the code on my GitHub : ', 'https://github.com/JEANFRANCOISTeddy/Students-Listing');
+    console.log(link);
 }).catch(function (err) {
     console.error(chalk.red("INTERNAL ERROR : Can't launch CLI"));
 })
-
-
-
-
-
-
-
-
-
