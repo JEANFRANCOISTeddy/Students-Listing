@@ -9,6 +9,16 @@ function studentToString(student: IStudent): string {
     return "{" + student.id + "/"  + student.lastName + ";" + student.firstName + "/" + student.birthDate + "/" + student.phoneNumber + "}\n";
 }
 
+export async function readAllFile(): Promise<void> {
+    readFile('students.rd', function (err,data) {
+        if (err) {
+            console.error(err);
+        }
+        const txt = data.toString('utf-8');
+        console.log(txt);
+    });
+}
+
 /**
  * Save student in the file and verify if isn't already existed
  * @param student
