@@ -1,5 +1,5 @@
 import {Student, IStudent} from './models'
-import {saveStudentInFile, findStudentById, findStudentByLastName, findStudentByFirstName} from './functions'
+import {saveStudentInFile, findStudentById, findStudentByLastName, findStudentByFirstName, readAllFile} from './functions'
 
 const chalk = require('chalk');
 const func = require('./functions'); //Récupération de l'Objet export
@@ -123,9 +123,20 @@ async function cli() {
             }
         break;
         case '3':
-            console.log("TODO : SHOW ALL STUDENTS IN FILE");
+            console.log(chalk.blue("---------- File content -----------"));
+            await readAllFile();
         break;
     }
+}
+
+/**
+ * Link to my GitHub
+ */
+async function printInformations(){
+    console.log(chalk.yellow("CLI has been correctly launched"));
+    const link = terminalLink('You can find the code on my GitHub : ', 'https://github.com/JEANFRANCOISTeddy/Students-Listing');
+    console.log(link);
+    console.log('\n');
 }
 
 /**
@@ -138,6 +149,8 @@ function printAsciiTitle() {
         verticalLayout: 'default',
         width: 200
     }));
+
+    printInformations().then(function() {});
 }
 
 printAsciiTitle();
@@ -146,9 +159,6 @@ printAsciiTitle();
  * Call cli
  */
 cli().then(function () {
-    console.log(chalk.yellow("CLI has been correctly launched"));
-    const link = terminalLink('You can find the code on my GitHub : ', 'https://github.com/JEANFRANCOISTeddy/Students-Listing');
-    console.log(link);
 }).catch(function (err) {
     console.error(chalk.red("INTERNAL ERROR : Can't launch CLI"));
 })
